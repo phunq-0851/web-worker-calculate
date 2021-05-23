@@ -1,25 +1,34 @@
-const first = document.querySelector('#number1');
-const second = document.querySelector('#number2');
+// const first = document.querySelector('#number1');
+// const second = document.querySelector('#number2');
 
-const result = document.querySelector('.result');
+// const result = document.querySelector('.result');
 
-if (window.Worker) {
-  const myWorker = new Worker('worker.js');
+// if (window.Worker) {
+//   const myWorker = new Worker("worker.js");
+// console.log(myWorker);
+//   first.onchange = function() {
+//     // myWorker.postMessage([first.value, second.value]);
+//     myWorker.postMessage([1,2]);
+//     console.log('Message posted to worker');
+//   }
 
-  first.onchange = function() {
-    myWorker.postMessage([first.value, second.value]);
-    console.log('Message posted to worker');
-  }
+//   second.onchange = function() {
+//     myWorker.postMessage([first.value, second.value]);
+//     console.log('Message posted to worker');
+//   }
 
-  second.onchange = function() {
-    myWorker.postMessage([first.value, second.value]);
-    console.log('Message posted to worker');
-  }
+//   myWorker.onmessage = function(e) {
+//     result.textContent = e.data;
+//     console.log('Message received from worker');
+//   }
+// } else {
+//   console.log('browser doesn\'t support web workers');
+// }
 
-  myWorker.onmessage = function(e) {
-    result.textContent = e.data;
-    console.log('Message received from worker');
-  }
-} else {
-  console.log('browser doesn\'t support web workers');
+
+function clickMe() {
+  const myWorker = new Worker("worker.js");
+
+   myWorker.postMessage([1,2]);
+  console.log('Message posted to worker');
 }
